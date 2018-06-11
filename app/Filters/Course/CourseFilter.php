@@ -13,6 +13,7 @@ use App\Filters\FiltersAbstract;
 class CourseFilter extends FiltersAbstract
 {
     protected $filters = [
-        'access' => AccessFilter::class
+        'access' => AccessFilter::class,
+        'type' => TypeFilter::class,
     ];
 }

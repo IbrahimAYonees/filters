@@ -8,7 +8,6 @@
 
 namespace App\Filters;
 
-use Beta\B;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -88,8 +87,4 @@ abstract class FiltersAbstract
     {
         return new $this->filters[$filter];
     }
-
-
-
-
 }

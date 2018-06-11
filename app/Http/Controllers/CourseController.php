@@ -24,4 +24,5 @@ class CourseController extends Controller
             'difficulty' => DifficultyFilter::class
         ];
     }
+
 }
