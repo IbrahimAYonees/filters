@@ -47,18 +47,28 @@ abstract class FiltersAbstract
         return $builder;
     }
 
-    public function resolveFilter($filter)
+    public function addFilters(array $filters)
     {
-        return new $this->filters[$filter];
+        $this->filters = array_merge($this->filters,$filters);
+        return $this;
     }
 
-    public function getFilters()
+    protected function getFilters()
     {
         return $this->filterFilters($this->filters);
     }
 
-    public function filterFilters($filters)
+    protected function filterFilters($filters)
     {
         return array_filter($this->request->only(array_keys($this->filters)));
     }
+
+    protected function resolveFilter($filter)
+    {
+        return new $this->filters[$filter];
+    }
+
+
+
+
 }
