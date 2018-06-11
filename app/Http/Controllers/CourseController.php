@@ -13,7 +13,12 @@ class CourseController extends Controller
         return Course::filter($request,$this->getFilters())->get();
     }
 
-    protected function getFilters()
+    /**
+     * create an array of filters
+     *
+     * @return array
+     */
+    protected function getFilters(): array
     {
         return [
             'difficulty' => DifficultyFilter::class

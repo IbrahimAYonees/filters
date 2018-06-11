@@ -8,6 +8,7 @@
 
 namespace App\Filters;
 
+use Beta\B;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -38,8 +39,10 @@ abstract class FiltersAbstract
      * use the given filters to filter throw the model
      *
      * @param \Illuminate\Database\Eloquent\Builder $builder
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function filter(Builder $builder)
+    public function filter(Builder $builder):Builder
     {
         foreach ($this->getFilters() as $filter => $value) {
             $this->resolveFilter($filter)->filter($builder,$value);
@@ -47,22 +50,40 @@ abstract class FiltersAbstract
         return $builder;
     }
 
+    /**
+     * add new filters from the controller
+     *
+     * @param array $filters     *
+     */
     public function addFilters(array $filters)
     {
         $this->filters = array_merge($this->filters,$filters);
         return $this;
     }
 
-    protected function getFilters()
+    /**
+     * gets the correct filters from the request that matches the stored filters
+     *
+     * @return array
+     */
+    protected function getFilters(): array
     {
-        return $this->filterFilters($this->filters);
+        return $this->filterFilters();
     }
 
-    protected function filterFilters($filters)
+    /**
+     * filter the request to remove any filters with empty values and any filters not in the filters array
+     *
+     * @return array
+     */
+    protected function filterFilters(): array
     {
         return array_filter($this->request->only(array_keys($this->filters)));
     }
 
+    /**
+     * instantiate the filter class for the given filter     *
+     */
     protected function resolveFilter($filter)
     {
         return new $this->filters[$filter];
