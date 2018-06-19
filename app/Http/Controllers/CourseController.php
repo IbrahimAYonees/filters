@@ -10,7 +10,7 @@ class CourseController extends Controller
 {
     public function index(Request $request)
     {
-        return Course::filter($request,$this->getFilters())->get();
+        return Course::with(['subjects','users'])->filter($request,$this->getFilters())->get();
     }
 
     /**

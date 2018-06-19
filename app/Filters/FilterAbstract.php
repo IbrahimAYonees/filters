@@ -45,4 +45,18 @@ abstract class FilterAbstract
         return array_get($this->mappings(),$key);
     }
 
+    /**
+     * Resolve the order direction to be used.
+     *
+     * @param  string $direction
+     * @return string
+     */
+    protected function resolveOrderDirection(string $direction):string
+    {
+        return array_get([
+            'd' => 'desc',
+            'a' => 'asc'
+        ], $direction, 'desc');
+    }
+
 }
