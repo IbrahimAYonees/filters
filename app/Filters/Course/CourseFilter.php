@@ -10,6 +10,7 @@ namespace App\Filters\Course;
 
 use App\Filters\FiltersAbstract;
 use App\Filters\Course\Ordering\ViewOrder;
+use App\Subject;
 
 class CourseFilter extends FiltersAbstract
 {
@@ -20,4 +21,36 @@ class CourseFilter extends FiltersAbstract
         'started' => StartedFilter::class,
         'views' => ViewOrder::class,
     ];
+
+    public static function mappings()
+    {
+        $map = [
+            'access' => [
+                'free' => 'Free',
+                'premium' => 'Premium'
+            ],
+            'difficulty' => [
+                'beginner' => 'Beginner',
+                'intermediate' => 'Intermediate',
+                'advanced' => 'Advanced'
+            ],
+            'type' => [
+                'snippet' => 'Snippet',
+                'project' => 'Project',
+                'theory' => 'Theory'
+            ],
+            'subject' => Subject::get()->pluck('name', 'slug'),
+        ];
+
+        if (auth()->check()) {
+            $map = array_merge($map, [
+                'started' => [
+                    'true' => 'Started',
+                    'false' => 'Not started'
+                ]
+            ]);
+        }
+
+        return $map;
+    }
 }
