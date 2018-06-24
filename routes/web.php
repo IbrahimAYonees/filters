@@ -20,3 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/courses','CourseController@index')->name('courses.index');
+
+Route::get('/courses/vue',function(){
+    return view('courses.indexVue');
+})->name('courses.vue');
+
+Route::get('/courses/show/all','CourseController@indexVue')->name('courses.show.all');

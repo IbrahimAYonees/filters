@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Course;
 use App\Filters\Course\DifficultyFilter;
+use App\Http\Resources\CoursesResource;
 
 class CourseController extends Controller
 {
@@ -12,6 +13,13 @@ class CourseController extends Controller
     {
         $courses = Course::with(['subjects','users'])->filter($request,$this->getFilters())->paginate(2);
         return view('courses.index',compact('courses'));
+    }
+
+    public function indexVue(Request $request)
+    {
+        return new CoursesResource(
+            Course::with(['subjects','users'])->filter($request,$this->getFilters())->paginate(2)
+        );
     }
 
     /**

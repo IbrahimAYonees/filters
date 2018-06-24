@@ -10,7 +10,11 @@ use App\Filters\Course\CourseFilter;
 class Course extends Model
 {
     public $appends = [
-        'started'
+        'started',
+        'formattedDifficulty',
+        'formattedType',
+        'formattedStarted',
+        'formattedAccess'
     ];
 
     public $hidden = [
