@@ -25,4 +25,6 @@ Route::get('/courses/vue',function(){
     return view('courses.indexVue');
 })->name('courses.vue');
 
+Route::get('/filters','CourseController@filters')->name('filters');
+
 Route::get('/courses/show/all','CourseController@indexVue')->name('courses.show.all');

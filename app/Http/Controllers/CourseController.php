@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\Filters\Course\DifficultyFilter;
 use App\Http\Resources\CoursesResource;
+use App\Filters\Course\CourseFilter;
 
 class CourseController extends Controller
 {
@@ -20,6 +21,13 @@ class CourseController extends Controller
         return new CoursesResource(
             Course::with(['subjects','users'])->filter($request,$this->getFilters())->paginate(2)
         );
+    }
+
+    public function filters()
+    {
+        return response()->json([
+            'data' => CourseFilter::mappings(),
+        ]);
     }
 
     /**
