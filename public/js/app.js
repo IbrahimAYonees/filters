@@ -50303,7 +50303,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -50405,8 +50405,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     data: function data() {
         return {
             courses: [],
-            meta: null,
-            endpoint: '/filters'
+            meta: null
         };
     },
     mounted: function mounted() {
@@ -51145,7 +51144,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "col-md-3" },
-      [_c("filters", { attrs: { endpoint: _vm.endpoint } })],
+      [_c("filters", { attrs: { endpoint: "/filters" } })],
       1
     ),
     _vm._v(" "),

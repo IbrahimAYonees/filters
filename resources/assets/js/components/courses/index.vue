@@ -2,7 +2,7 @@
     <div id="index" class="row">
         <div class="col-md-3">
             <filters
-                :endpoint="endpoint"
+                endpoint="/filters"
             >
             </filters>
         </div>
@@ -49,7 +49,6 @@
             return{
                 courses: [],
                 meta: null,
-                endpoint: '/filters'
             }
         },
         mounted(){
